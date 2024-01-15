@@ -1,0 +1,201 @@
+<FlatButton@ButtonBehavior+Label>:
+    text: 'default'
+<AdminWindow>:
+    id:main_win
+    orientation:'vertical'
+    canvas.before:
+        Color:
+            rgba:(1,1,1,1)
+        Rectangle:
+            size:self.size
+            pos:self.pos
+    BoxLayout:
+        id:top_nav
+        size_hint_y:None
+        height:30
+        canvas.before:
+            Color:
+                rgba:(.06,.1,.70,1)
+            Rectangle:
+                size:self.size
+                pos:self.pos
+
+        FlatButton:
+            id:file_trigger
+            text:'File'
+            on_release:file_dropdown.open(self)
+            size_hint:(.1,None)
+            height:30
+
+            Widget:
+                on_parent:file_dropdown.dismiss()
+
+                DropDown:
+                    id:file_dropdown
+                    Button:
+                        id:close
+                        text:'quit'
+                        size_hint_y:None
+                        height:30
+        Label:
+            text:'Admin Dashboard'
+            bold:True
+            size_hint:(.9,None)
+            height:30
+    BoxLayout:
+        id:content_nav
+
+        BoxLayout:
+            id:nav_tabs
+            size_hint_x:.2
+            orientation:'vertical'
+            spacing:3
+            canvas.before:
+                Color:
+                    rgba:(.07,.33,.40,1)
+                Rectangle:
+                    size:self.size
+                    pos:self.pos
+            ToggleButton:
+                id:user_toggle
+                text:'Manage Users'
+                size_hint_y:.1
+                state:'down'
+                background_color:(.27,.57,.90,1)
+                background_normal:''
+                group: 'admin_navs'
+                on_state: root.change_screen(self)
+            ToggleButton:
+                id:vehicle_toggle
+                text:'Manage Vehicles'
+                size_hint_y:.1
+                background_color:(.27,.57,.90,1)
+                background_normal:''
+                group: 'admin_navs'
+                on_state: root.change_screen(self)
+            ToggleButton:
+                id:analysis_toggle
+                text:'Incidents Analysis'
+                size_hint_y:.1
+                background_color:(.27,.57,.90,1)
+                background_normal:''
+                group: 'admin_navs'
+                on_state: root.change_screen(self)
+            ToggleButton:
+                id:analysis_toggle
+                text:'View Violations'
+                size_hint_y:.1
+                background_color:(.27,.57,.90,1)
+                background_normal:''
+                group: 'admin_navs'
+                on_state: root.change_screen(self)
+            Label:
+                id:sp
+                text:''
+                size_hint_y:.6
+        BoxLayout:
+            id:all_content
+            size_hint_x:.8
+            padding: (20,10)
+            ScreenManager:
+                id: scrn_mngr
+                Screen:
+                    id: scrn_content
+                    name: 'scrn_content'
+                    BoxLayout:
+                        orientation: 'vertical'
+                        spacing: 10
+                        BoxLayout:
+                            id: scrn_contents
+
+                        BoxLayout:
+                            id: ops_fields
+                            spacing: 10
+                            size_hint_y: None
+                            height: 35
+                        BoxLayout:
+                            id:ops_btns
+                            spacing:10
+                            size_hint_y: None
+                            height:45
+                            Button:
+                                id: crud_add
+                                text: 'New User'
+                                on_release: root.add_user_fields()
+                            Button:
+                                id: crud_update
+                                text: 'Update User'
+                                on_release: root.update_user_fields()
+                            Button:
+                                id: crud_remove
+                                text: 'Remove User'
+                                on_release: root.remove_user_fields()
+
+                Screen:
+                    id: scrn_vehicle_content
+                    name: 'scrn_vehicle_content'
+                    BoxLayout:
+                        orientation: 'vertical'
+                        spacing: 10
+                        BoxLayout:
+                            id: scrn_vehicle_contents
+
+                        BoxLayout:
+                            id: ops_fields_veh
+                            spacing: 10
+                            size_hint_y: None
+                            height: 35
+                        BoxLayout:
+                            id:ops_btns_veh
+                            spacing:10
+                            size_hint_y: None
+                            height:45
+                            Button:
+                                id: crud_add_veh
+                                text: 'Add Vehicle'
+                                on_release: root.add_vehicle_fields()
+                            Button:
+                                id: crud_update_veh
+                                text: 'Update Vehicles'
+                                on_release: root.update_vehicle_fields()
+                            Button:
+                                id: crud_remove_veh
+                                text: 'Remove Vehicle'
+                                on_release: root.remove_vehicle_fields()
+
+                Screen:
+                    id: scrn_analysis
+                    name: 'scrn_analysis'
+                    BoxLayout:
+                        orientation: 'vertical'
+                        spacing: 10
+                        id: scrn_violations
+                Screen:
+                    id: view_analysis
+                    name: 'view_analysis'
+                    BoxLayout:
+                        orientation: 'vertical'
+                        spacing: 10
+                        BoxLayout:
+                            size_hint_y: None
+                            height: 45
+                            Spinner:
+                                id:target_violation
+                                text:'See Violation'
+                            Button:
+                                id: view_violation
+                                text:'View Violation'
+                                size_hint_x: .3
+                                on_release:root.view_stats()
+                        BoxLayout:
+                            id:analysis_res
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,63 @@
+<BoxLayout>:
+    orientation: 'vertical'
+    spacing:10
+
+<FloatLayout>:
+    name:name
+    regno:regno
+    course:course
+    year:year
+    sem:sem
+    BoxLayout:
+        orientation:'horizontal'
+        pos_hint:{'center_x': 0.5, 'center_y': 0.9}
+        size_hint_y:None
+        height:.14
+
+        Label:
+            text:'SignUp Page'
+            bold:True
+            size_hint_x:.9
+        Button:
+            background_color:0,0,0,1
+            text:'X'
+            size_hint_x:.1
+    BoxLayout:
+        pos_hint:{'center_x': 0.35, 'center_y': 0.5}
+        size_hint:0.3,0.6
+        Label:
+            text:"Name"
+        Label:
+            text:"Registration No"
+        Label:
+            text:"Course"
+        Label:
+            text:"Year"
+        Label:
+            text:"Semester"
+    BoxLayout:
+        pos_hint:{'center_x': 0.65, 'center_y': 0.5}
+        size_hint:0.3,0.6
+        TextInput:
+            id:name
+            multiline: False
+        TextInput:
+            id:regno
+            multiline: False
+        TextInput:
+            id:course
+            multiline: False
+        TextInput:
+            id:year
+            multiline: False
+        TextInput:
+            id:sem
+            multiline: False
+    Button:
+        pos_hint:{'center_x': 0.5, 'center_y': 0.14}
+        size_hint:0.2,0.06
+        background_color:0,0,1,1
+        text:"Submit"
+        on_press:root.display()
+
+
