@@ -1,0 +1,117 @@
+<BoxLayout>:
+    orientation: 'vertical'
+    spacing:20
+<FlatButton@ButtonBehavior+Label>:
+    font_size: 16
+
+
+<RegisterWindow>:
+    canvas.before:
+        Color:
+            rgba: (1,1,1, 1)
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+    BoxLayout:
+        orientation:'horizontal'
+        pos_hint:{'center_x': 0.5, 'center_y': 0.9}
+        size_hint_y:None
+        height:.14
+        canvas.before:
+            Color:
+                rgba: (.06,.1,.70,1)
+            Rectangle:
+                size: self.size
+                pos: self.pos
+
+        Label:
+            text:'SignUp Page'
+            bold:True
+            size_hint_x:.9
+        Button:
+            background_color:0,0,0,1
+            text:'X'
+            size_hint_x:.1
+    BoxLayout:
+        pos_hint:{'center_x': 0.5, 'center_y': 0.5}
+        size_hint:0.8,0.4
+        orientation: 'horizontal'
+        BoxLayout:
+            size_hint_x:.4
+            Label:
+                text: "First Name"
+                canvas.before:
+                    Color:
+                        rgba: .27,.57,.90,1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+            Label:
+                text: "Surname"
+                canvas.before:
+                    Color:
+                        rgba: .27,.57,.90,1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+            Label:
+                text: "Username"
+                canvas.before:
+                    Color:
+                        rgba: .27,.57,.90,1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+            Label:
+                text: "Password"
+                canvas.before:
+                    Color:
+                        rgba: .27,.57,.90,1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+            Label:
+                text: "ID NO"
+                canvas.before:
+                    Color:
+                        rgba: .27,.57,.90,1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+        BoxLayout:
+            size_hint_x: .6
+            TextInput:
+                id:name
+                multiline: False
+                height:30
+            TextInput:
+                id: regno
+                multiline: False
+                height:30
+            TextInput:
+                id:course
+                multiline: False
+            TextInput:
+                id:year
+                multiline: False
+            TextInput:
+                id:sem
+                multiline: False
+    Button:
+        pos_hint:{'center_x': 0.5, 'center_y': 0.14}
+        size_hint:0.2,0.06
+        background_color:0,0,1,1
+        text:"Submit"
+        on_press:root.display()
+
+    FlatButton:
+        id: switch
+        text:'Register'
+        font_size: 14
+        size_hint_y: None
+        color: (0,0,1,1)
+        underline: True
+        on_release: root.switch_to_signin()
+
+

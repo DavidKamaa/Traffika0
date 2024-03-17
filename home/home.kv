@@ -1,0 +1,191 @@
+# database.kv
+<FlatButton@ButtonBehavior+Label>:
+    font_size: 14
+
+<HomeWindow>:
+    id: main_win
+    orientation: 'vertical'
+    canvas.before:
+        Color:
+            rgba: (1,1,1, 1)
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+    BoxLayout:
+        id: header
+        size_hint_y: None
+        height: 40
+        orientation: 'horizontal'
+        canvas.before:
+            Color:
+                rgba: (.06, .45, .45, 1)
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        Label:
+            text: 'Traffika'
+            size_hint_x: .9
+            bold: True
+            color: (1,1,1,1)
+        FlatButton:
+            id: loggedin_user
+            text: 'userA'
+            color: (1,1,1,1)
+            size_hint_x: .1
+            underline: True
+            on_release: root.logout()
+
+    FloatLayout:
+    	id:info
+    	size_hint_y:.3
+        canvas.before:
+            Color:
+                rgba:(.80,.33,.40,1)
+            Rectangle:
+                size:self.size
+                pos:self.pos
+        TextInput:
+            id: text_input
+            multiline: True
+            hint_text: 'Enter text...'
+            size_hint: .9, .5
+            pos_hint: {'center_x': 0.5, 'center_y': 0.65}
+
+        Button:
+            text: 'Submit'
+            on_press: app.submit_text(self)
+            size_hint: 0.3, 0.1
+            pos_hint: {'center_x': 0.5, 'center_y': 0.3}
+
+    GridLayout:
+        cols: 2
+        rows: 2
+        padding: 10
+        spacing: 10
+        size_hint_y:.5
+        canvas.before:
+            Color:
+                rgba:(.80,.3,.40,1)
+            Rectangle:
+                size:self.size
+                pos:self.pos
+
+
+        FloatLayout:
+            size_hint: (.5, .5)
+            backgroud_color: (1, .65, .65, 1)
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            text: 'Add Image'
+            canvas.before:
+                Color:
+                    rgba: (.86, .65, .65, 1)
+                Line:
+                    rounded_rectangle: (self.x, self.y, self.width, self.height, 15, 15)
+
+            Button:
+                size_hint: None, None
+                size: 100,100  # Adjust the size as needed
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                background_normal: 'assets/photo-100.png'
+                background_down: 'assets/photo-100.png'
+                on_press: root.on_button_press(self)
+            Label:
+                text: 'Add Image'
+
+        FloatLayout:
+            size_hint: (.5, .5)
+            backgroud_color: (0, 0, 1, 1)
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            text: 'View'
+            canvas.before:
+                Color:
+                    rgba: (.86, .65, .65, 1)
+                Line:
+                    rounded_rectangle: (self.x, self.y, self.width, self.height, 15, 15)
+
+            Button:
+                size_hint: None, None
+                size: 100,100  # Adjust the size as needed
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                background_normal: 'assets/view-100.png'
+                background_down: 'assets/view-100.png'
+                on_press: app.view_analysis()
+            Label:
+                text: 'View'
+
+        FloatLayout:
+            size_hint: (.5, .5)
+            backgroud_color: (.86, .65, .05, 1)
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            canvas.before:
+                Color:
+                    rgba: (.86, .65, .65, 1)
+                Line:
+                    rounded_rectangle: (self.x, self.y, self.width, self.height, 15, 15)
+
+            Button:
+                size_hint: None, None
+                size: 100,100  # Adjust the size as needed
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                background_normal: 'assets/history-100.png'
+                background_down: 'assets/history-100.png'
+                on_press: root.on_button_press(self)
+            Label:
+                text: 'History'
+
+        FloatLayout:
+            size_hint: (.5, .5)
+            backgroud_color: (1, 0, .0, 1)
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            canvas.before:
+                Color:
+                    rgba: (.86, .65, .65, 1)
+                Line:
+                    rounded_rectangle: (self.x, self.y, self.width, self.height, 15, 15)
+
+            Button:
+                size_hint: None, None
+                size: 100,100  # Adjust the size as needed
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                background_normal: 'assets/fine-100.png'
+                background_down: 'assets/fine-100.png'
+                on_press: root.on_button_press(self)
+            Label:
+                text: 'Sanctions'
+
+
+    FloatLayout:
+        id: footer
+        size_hint_y: None
+        height: 50
+        canvas.before:
+            Color:
+                rgba: (.06, .47, .47, 1)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        Button:
+            id:home
+            size_hint: None, None
+            size: 50,50  # Adjust the size as needed
+            background_normal: 'assets/home.png'
+            background_down: 'assets/home.png'
+            pos_hint: {'center_x': 0.2, 'center_y': 0.5}
+        Button:
+            id: search
+            size_hint: None, None
+            size: 50,50  # Adjust the size as needed
+            background_normal: 'assets/search.png'
+            background_down: 'assets/search.png'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+        Button:
+            id: account
+            size_hint: None, None
+            size: 50,50  # Adjust the size as needed
+            background_normal: 'assets/account.png'
+            background_down: 'assets/account.png'
+            pos_hint: {'center_x': 0.8, 'center_y': 0.5}
+
+
